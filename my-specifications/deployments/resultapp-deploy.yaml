@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resultapp-deploy
+  labels:
+    app: demo-voting-app
+spec:
+  selector:
+    matchLabels:
+      name: resultapp-pod
+      app: demo-voting-app
+  template:
+    metadata:
+      name: resultapp-pod
+      labels:
+        name: resultapp-pod
+        app: demo-voting-app
+    spec:
+      containers:
+        - name: resultapp
+          image: dakshayahuja/votingapp-result
+          ports:
+            - containerPort: 80
+    
